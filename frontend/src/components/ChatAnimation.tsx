@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * Right-side SVG animation.
  * - Three circles start overlapped (one), then hide for 0.5s,
