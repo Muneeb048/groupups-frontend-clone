@@ -1,6 +1,5 @@
 import { useRef, useEffect } from "react";
 
-import Navbar from "./Navbar";
 import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
 import ChatAnimation from "../components/ChatAnimation";
