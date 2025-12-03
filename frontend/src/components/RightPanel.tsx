@@ -2,7 +2,7 @@ import React from "react";
 
 const RightPanel: React.FC = () => {
   return (
-    <div className="flex flex-col items-center p-6 md:p-8 mt-5 text-center ">
+    <div className="flex  flex-col items-center p-6 md:p-8 mt-5 text-center ">
       <h1 className="text-2xl md:text-4xl tracking-tight font-bold text-[#4aa6a4] mb-2">
         group<span className="text-white">ups</span>
       </h1>

@@ -42,7 +42,7 @@ const EquipmentSection: React.FC<EquipmentSectionProps> = ({
       </div>
     ) : (
       <>
-        <h3 className="px-56 text-white/80 text-lg mb-8 max-w-4xl mx-autoleft">
+        <h3 className="px-4 text-center md:text-left md:px-16 lg:px-56 text-white/80 text-lg mb-8 max-w-4xl mx-auto">
           Select the equipment you need:
         </h3>
         <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">

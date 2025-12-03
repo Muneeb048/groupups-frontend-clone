@@ -30,7 +30,7 @@ const ChatInput: React.FC<InputProps> = ({
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         rows={3}
-        className="w-full  px-4 py-3 pr-12 bg-[#ffffff0d]/5 resize-none rounded-3xl text-white placeholder:text-[#ffffff]/19 focus:outline-none text-sm  transition-colors resize-none overflow-y-auto scrollbar-thin"
+        className="w-full  px-4 py-3 pr-12 bg-[#ffffff0d]/5 resize-none rounded-3xl text-white placeholder:text-[#ffffff]/19 focus:outline-none text-sm  transition-colors  overflow-y-auto scrollbar-thin"
         autoFocus
       />
       <button
@@ -45,9 +45,9 @@ const ChatInput: React.FC<InputProps> = ({
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-arrow-up w-4 h-4 text-black"
           aria-hidden="true"
         >

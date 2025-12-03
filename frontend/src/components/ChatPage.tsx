@@ -2,7 +2,8 @@ import { useRef, useEffect } from "react";
 
 import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
-import ChatAnimation from "../components/ChatAnimation";
+import animationSvg from "../assets/animation.svg";
+
 import { useChat } from "../hooks/useChat";
 
 const ChatPage: React.FC = () => {
@@ -64,8 +65,8 @@ const ChatPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex lg:w-[40%] items-center justify-center bg-[#041018] ">
-        <ChatAnimation />
+      <div className="hidden lg:flex lg:w-[40%] items-center justify-center bg-[#041018]">
+        <img src={animationSvg} alt="Animation" />
       </div>
 
       <style>{`

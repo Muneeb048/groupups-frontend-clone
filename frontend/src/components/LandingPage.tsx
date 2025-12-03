@@ -32,7 +32,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             This should take ~5 minutes.
           </p>
         </div>
-        <div className="w-full lg:w-[60%] flex items-center justify-center bg-[#000000]/20 border-t lg:border-t-0  border-gray-800">
+        <div className="w-full  lg:w-[60%] flex items-center justify-center bg-[#000000]/20 border-t lg:border-t-0  border-gray-800">
           <RightPanel />
         </div>
       </div>

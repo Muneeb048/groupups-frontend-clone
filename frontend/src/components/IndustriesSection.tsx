@@ -15,7 +15,7 @@ const IndustriesSection: React.FC<IndustrySectionProps> = ({
         fadeIn ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h3 className="px-16 text-white/80 text-lg mb-8 max-w-4xl mx-auto">
+      <h3 className="px-4 text-center md:text-left md:px-16 text-white/80 text-lg mb-8 max-w-4xl mx-auto">
         Select your industry first
       </h3>
       <div className="max-w-3xl mt-2 mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">

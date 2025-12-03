@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Industry } from "../types";
 
 type Step = "industry" | "equipment" | "chatbot";
+
 export const useIndustrySelection = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<Industry>(() => {
     try {
@@ -22,11 +23,17 @@ export const useIndustrySelection = () => {
     null
   );
   const [fadeIn, setFadeIn] = useState(true);
+
   const handleIndustrySelect = (industry: Industry) => {
+    setSelectedIndustry(industry);
+    setIsTransitioning(true);
+    setFadeIn(false);
+
     try {
       if (industry) localStorage.setItem("selectedIndustry", industry);
       else localStorage.removeItem("selectedIndustry");
     } catch (e) {}
+
     setTimeout(() => {
       setCurrentStep("equipment");
       setIsTransitioning(false);
@@ -41,6 +48,7 @@ export const useIndustrySelection = () => {
   const handleProceedToChatbot = () => {
     setIsTransitioning(true);
     setFadeIn(false);
+
     setTimeout(() => {
       setCurrentStep("chatbot");
       setIsTransitioning(false);
@@ -57,9 +65,7 @@ export const useIndustrySelection = () => {
 
     try {
       localStorage.removeItem("selectedIndustry");
-    } catch (e) {
-      // ignore
-    }
+    } catch (e) {}
   };
 
   return {
