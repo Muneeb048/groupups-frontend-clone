@@ -1,11 +1,3 @@
-/**
- * Right-side SVG animation.
- * - Three circles start overlapped (one), then hide for 0.5s,
- *   then expand/bloom into a flower-like overlapping circles.
- *
- * Uses CSS keyframes below.
- */
-
 function ChatAnimation() {
   return (
     <div className="w-full h-full flex items-center justify-center overflow-hidden">
