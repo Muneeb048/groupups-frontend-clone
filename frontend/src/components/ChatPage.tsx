@@ -5,7 +5,7 @@ import ChatMessage from "../components/ChatMessage";
 import animationSvg from "../assets/CircleVenn.json";
 
 import { useChat } from "../hooks/useChat";
-import Lottie from "lottie-react";
+import LottiePlayer from "./LottiePlayer";
 
 const ChatPage: React.FC = () => {
   const { messages, inputValue, handleInputChange, handleSubmit } = useChat();
@@ -70,9 +70,7 @@ const ChatPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex lg:w-[40%] ml-8 items-center justify-center bg-[#041018]">
-        <Lottie animationData={animationSvg} loop autoplay />
-      </div>
+      <LottiePlayer animationData={animationSvg} />
 
       <style>{`
         .scrollbar-custom::-webkit-scrollbar {
