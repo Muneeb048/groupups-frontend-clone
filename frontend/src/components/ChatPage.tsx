@@ -35,7 +35,7 @@ const ChatPage: React.FC = () => {
             <span className="text-white text-sm">Your Rep</span>
           </button>
         </nav>
-        <div className="flex-1 overflow-y-auto mt-1 px-6 py-6 scrollbar-custom">
+        <div className="flex-1 overflow-y-auto mt-2 px-6 py-6 scrollbar-custom">
           <div className="max-w-2xl mx-auto">
             {messages.map((message) => (
               <ChatMessage key={message.id} message={message} />
@@ -70,7 +70,7 @@ const ChatPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex lg:w-[40%] items-center justify-center bg-[#041018]">
+      <div className="hidden lg:flex lg:w-[40%] ml-8 items-center justify-center bg-[#041018]">
         <Lottie animationData={animationSvg} loop autoplay />
       </div>
 
