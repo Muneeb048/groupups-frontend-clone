@@ -8,7 +8,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     <div className="min-h-screen bg-[#041018] flex flex-col">
       <Navbar />
       <div className="flex-1 flex ">
-        <div className="w-full lg:w-[40%] flex flex-col justify-center lg:justify-start lg:px-12 px-6 pt-12 lg:pt-20  mt-5 text-left">
+        <div className="w-full lg:w-[40%] flex flex-col justify-center lg:justify-start lg:px-12 px-6 pt-12 lg:pt-[4.9rem]  mt-5 text-left">
           <h2 className="text-2xl md:text-3xl lg:text-3xl text-white mb-6 md:mb-6 leading-tight">
             <span className="block md:whitespace-nonwrap">
               Hi! I can help narrow down
@@ -28,7 +28,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               Get Started
             </button>
           </div>
-          <p className="text-gray-500 text-center mt-14 text-sm ">
+          <p className="text-[#ffffff69] text-center mt-[3.6rem] text-sm ">
             This should take ~5 minutes.
           </p>
         </div>

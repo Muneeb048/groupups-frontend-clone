@@ -1,3 +1,5 @@
+//LottiePlayer.tsx
+
 import React from "react";
 import { useLottie } from "lottie-react";
 

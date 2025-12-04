@@ -3,9 +3,8 @@ import { useRef, useEffect } from "react";
 import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
 import animationSvg from "../assets/CircleVenn.json";
-
-import { useChat } from "../hooks/useChat";
 import LottiePlayer from "./LottiePlayer";
+import { useChat } from "../hooks/useChat";
 
 const ChatPage: React.FC = () => {
   const { messages, inputValue, handleInputChange, handleSubmit } = useChat();
@@ -21,16 +20,16 @@ const ChatPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#041018] flex">
       <div className="w-full lg:w-[55%] flex flex-col border-r border-teal-950/70 h-screen">
-        <nav className="bg-[#041018] sticky  z-50 w-full px-8 py-3 flex items-center justify-between ">
+        <nav className="bg-[#041018] sticky  z-50 w-full px-8 py-[0.7rem] flex items-center justify-between ">
           <h1 className="text-3xl font-bold text-white">
             group<span className=" text-[#4aa6a4]">ups</span>
           </h1>
 
-          <button className="flex items-center gap-2 mt-1 px-2 py-2 bg-[#191919] rounded-full border border-1 border-[#696969] transition-colors">
+          <button className="flex items-center gap-2 mt-2 p-[0.5rem] py-2 bg-[#191919] rounded-full border border-1 border-[#696969] transition-colors">
             <img
               src="https://i.pravatar.cc/100" // random avatar
               alt="Rep"
-              className="w-7 h-7 rounded-full object-cover"
+              className="mr-1 w-7 h-7 rounded-full object-cover"
             />
             <span className="text-white text-sm">Your Rep</span>
           </button>
@@ -51,7 +50,7 @@ const ChatPage: React.FC = () => {
               onSubmit={handleSubmit}
             />
 
-            <div className="mt-4 mr-1 text-center text-xs text-gray-400">
+            <div className="mt-4  text-center text-xs text-gray-400">
               Our{" "}
               <a
                 href="#"

@@ -7,12 +7,21 @@ const IndustryCard: React.FC<IndustryCardProps> = ({
   onClick,
 }) => {
   return (
-    <div
-      onClick={onClick}
-      className="h-44 border rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer transition border-teal-950 bg-[#030d13] hover:border-teal-700 "
-    >
-      <div className="text-teal-400 text-5xl">{icon}</div>
-      <p className="text-white">{title}</p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <button
+        onClick={onClick}
+        className="border border-[#187775]/30 cursor-pointer rounded-lg px-28 py-4 pt-14 flex flex-col items-center justify-end gap-6 hover:border-[#4aa6a4] transition-colors relative"
+      >
+        <div className="relative w-12 h-12">
+          <div
+            className=" w-full h-full object-contain transition-opacity duration-300 opacity-100
+"
+          >
+            {icon}
+          </div>
+        </div>
+        <span className="text-white">{title}</span>
+      </button>
     </div>
   );
 };
