@@ -31,5 +31,5 @@ export interface ChatContentProps {
   onInputChange: (value: string) => void;
   onSubmit: () => void;
   onOpenRepPopup: () => void;
-  messagesEndRef: React.RefObject<HTMLDivElement>;
+  messagesEndRef: React.RefObject<HTMLDivElement | null>;
 }

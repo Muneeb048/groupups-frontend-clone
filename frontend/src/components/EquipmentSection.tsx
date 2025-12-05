@@ -1,6 +1,5 @@
 import React from "react";
 import EquipmentButton from "./EquipmentButton";
-import Skeleton from "./Skeleton";
 import type { EquipmentSectionProps } from "../types";
 
 const EquipmentSection: React.FC<EquipmentSectionProps> = ({

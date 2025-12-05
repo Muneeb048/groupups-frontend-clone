@@ -2,7 +2,7 @@ import React from "react";
 import ChatMessage from "./ChatMessage";
 import type { ChatMessagesProps } from "../types/chatPage";
 
-const ChatMessages: React.FC<ChatMessagesProps & { messagesEndRef: React.RefObject<HTMLDivElement> }> = ({
+const ChatMessages: React.FC<ChatMessagesProps & { messagesEndRef: React.RefObject<HTMLDivElement | null> }> = ({
   messages,
   isLoading,
   messagesEndRef,
