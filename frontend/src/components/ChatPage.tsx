@@ -1,112 +1,78 @@
-import { useRef, useEffect } from "react";
+import { useState } from "react";
 
-import ChatInput from "../components/ChatInput";
-import ChatMessage from "../components/ChatMessage";
 import animationSvg from "../assets/CircleVenn.json";
 import LottiePlayer from "./LottiePlayer";
 import { useChat } from "../hooks/useChat";
+import { useResizablePanel } from "../hooks/useResizablePanel";
+import { useScrollToBottom } from "../hooks/useScrollToBottom";
+import ChatContent from "./ChatContent";
+import ResizableDivider from "./ResizableDivider";
+import RepPopup from "./RepPopup";
+import ChatScrollbarStyles from "./ChatScrollbarStyles";
 
 const ChatPage: React.FC = () => {
-  const { messages, inputValue, handleInputChange, handleSubmit } = useChat();
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const { messages, inputValue, handleInputChange, handleSubmit, isLoading } =
+    useChat();
+  const [isRepPopupOpen, setIsRepPopupOpen] = useState(false);
+  const { leftWidth, containerRef, handleMouseDown } = useResizablePanel({
+    defaultWidth: 55,
+    minWidth: 30,
+    maxWidth: 70,
+  });
+  const messagesEndRef = useScrollToBottom([messages, isLoading]);
 
   return (
-    <div className="min-h-screen bg-[#041018] flex">
-      <div className="w-full lg:w-[55%] flex flex-col border-r border-teal-950/70 h-screen">
-        <nav className="bg-[#041018] sticky  z-50 w-full px-8 py-[0.7rem] flex items-center justify-between ">
-          <h1 className="text-3xl font-bold text-white">
-            group<span className=" text-[#4aa6a4]">ups</span>
-          </h1>
-
-          <button className="flex items-center gap-2 mt-2 p-[0.5rem] py-2 bg-[#191919] rounded-full border border-1 border-[#696969] transition-colors">
-            <img
-              src="https://i.pravatar.cc/100" // random avatar
-              alt="Rep"
-              className="mr-1 w-7 h-7 rounded-full object-cover"
-            />
-            <span className="text-white text-sm">Your Rep</span>
-          </button>
-        </nav>
-        <div className="flex-1 overflow-y-auto mt-2 px-6 py-6 scrollbar-custom">
-          <div className="max-w-2xl mx-auto">
-            {messages.map((message) => (
-              <ChatMessage key={message.id} message={message} />
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-        </div>
-        <div className="px-4 pb-4 flex-shrink-0">
-          <div className="max-w-2xl mx-auto">
-            <ChatInput
-              value={inputValue}
-              onChange={handleInputChange}
-              onSubmit={handleSubmit}
-            />
-
-            <div className="mt-4  text-center text-xs text-gray-400">
-              Our{" "}
-              <a
-                href="#"
-                className="text-[#4aa6a4] hover:text-white transition-colors"
-              >
-                Privacy policy
-              </a>
-              {" & "}
-              <a
-                href="#"
-                className="text-[#4aa6a4] hover:text-cyan-300 transition-colors"
-              >
-                Terms of use
-              </a>
-            </div>
-          </div>
+    <div ref={containerRef} className="min-h-screen bg-[#041018] flex relative">
+      {/* Desktop: Resizable chat panel */}
+      <div
+        className="hidden lg:flex flex-col h-screen transition-none"
+        style={{ width: `${leftWidth}%` }}
+      >
+        <div className="flex flex-col border-r border-teal-950/70 h-screen flex-1">
+          <ChatContent
+            messages={messages}
+            isLoading={isLoading}
+            inputValue={inputValue}
+            onInputChange={handleInputChange}
+            onSubmit={handleSubmit}
+            onOpenRepPopup={() => setIsRepPopupOpen(true)}
+            messagesEndRef={messagesEndRef}
+          />
         </div>
       </div>
-      <LottiePlayer animationData={animationSvg} />
 
-      <style>{`
-        .scrollbar-custom::-webkit-scrollbar {
-          width: 6px;
-        }
-        
-        .scrollbar-custom::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        .scrollbar-custom::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-        }
-        
-        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.15);
-        }
+      {/* Resizable divider */}
+      <ResizableDivider onMouseDown={handleMouseDown} />
 
-        .scrollbar-thin::-webkit-scrollbar {
-          width: 4px;
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.15);
-        }
-      `}</style>
+      {/* Desktop: Animation panel - fixed 40% width (original size) */}
+      <div
+        className="hidden lg:flex h-screen bg-[#041018] ml-6 transition-none flex-shrink-0"
+        style={{ width: "41%" }}
+      >
+        <LottiePlayer animationData={animationSvg} />
+      </div>
+
+      {/* Mobile: Full width chat */}
+      <div className="lg:hidden w-full flex flex-col border-r border-teal-950/70 h-screen">
+        <ChatContent
+          messages={messages}
+          isLoading={isLoading}
+          inputValue={inputValue}
+          onInputChange={handleInputChange}
+          onSubmit={handleSubmit}
+          onOpenRepPopup={() => setIsRepPopupOpen(true)}
+          messagesEndRef={messagesEndRef}
+        />
+      </div>
+
+      <RepPopup
+        isOpen={isRepPopupOpen}
+        onClose={() => setIsRepPopupOpen(false)}
+      />
+
+      <ChatScrollbarStyles />
     </div>
   );
 };
+
 export default ChatPage;

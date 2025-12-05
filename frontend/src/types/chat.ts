@@ -1,3 +1,4 @@
+//chat.ts
 export interface Message {
   id: string;
   text: string;
@@ -8,4 +9,5 @@ export interface Message {
 export interface ChatState {
   messages: Message[];
   inputValue: string;
+  isLoading?: boolean;
 }

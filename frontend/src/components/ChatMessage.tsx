@@ -1,17 +1,35 @@
 import React from "react";
 import { useTypingEffect } from "../hooks/useTypingEffect"; // Adjust path as needed
 import type { Message } from "../types/chat";
+import Skeleton from "./Skeleton";
 
 interface ChatMessageProps {
-  message: Message;
+  message?: Message;
+  isLoading?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
-  const isBot = message.sender === "bot";
+const ChatMessage: React.FC<ChatMessageProps> = ({ message, isLoading = false }) => {
+  const isBot = message?.sender === "bot";
   const { displayedText, isTyping } = useTypingEffect(
-    isBot ? message.text : "",
+    isBot && message ? message.text : "",
     30
   );
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-start mb-4">
+        <div className="max-w-[80%] px-5 py-3 rounded-2xl bg-white/5">
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-48" />
+            <Skeleton className="h-4 w-40" />
+            <Skeleton className="h-4 w-32" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!message) return null;
 
   return (
     <div className={`flex ${isBot ? "justify-start" : "justify-end"} mb-4`}>

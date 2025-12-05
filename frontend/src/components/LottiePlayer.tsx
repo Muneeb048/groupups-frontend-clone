@@ -27,10 +27,12 @@ const LottiePlayer: React.FC<LottiePlayerProps> = ({ animationData }) => {
 
   return (
     <div
-      className="hidden lg:flex lg:w-[40%] ml-8 items-center justify-center bg-[#041018] "
+      className="w-full h-full flex items-center justify-center bg-[#041018]"
       onClick={togglePlay}
     >
-      {View}
+      <div className="w-full max-w-[600px] h-full flex items-center justify-center">
+        {View}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import EquipmentButton from "./EquipmentButton";
+import Skeleton from "./Skeleton";
 import type { EquipmentSectionProps } from "../types";
 
 const EquipmentSection: React.FC<EquipmentSectionProps> = ({
@@ -8,12 +9,16 @@ const EquipmentSection: React.FC<EquipmentSectionProps> = ({
   onSelectEquipment,
   onFindEquipment,
   fadeIn,
+  isLoading = false,
 }) => (
   <div
     className={`transition-opacity duration-700 ${
-      fadeIn ? "opacity-100" : "opacity-0"
+      isLoading ? "opacity-100" : fadeIn ? "opacity-100" : "opacity-0"
     }`}
   >
+    <h3 className="px-4 text-center md:text-left md:px-16 lg:px-56 text-white/80 text-lg mb-8 max-w-4xl mx-auto">
+      Select the equipment you need:
+    </h3>
     {equipment.length === 0 ? (
       <div className="max-w-2xl mx-auto text-center py-12">
         <div className="mb-6">
@@ -40,11 +45,16 @@ const EquipmentSection: React.FC<EquipmentSectionProps> = ({
           Please check back later.
         </p>
       </div>
+    ) : isLoading ? (
+      <>
+        <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          <EquipmentButton isLoading />
+          <EquipmentButton isLoading />
+          <EquipmentButton isLoading />
+        </div>
+      </>
     ) : (
       <>
-        <h3 className="px-4 text-center md:text-left md:px-16 lg:px-56 text-white/80 text-lg mb-8 max-w-4xl mx-auto">
-          Select the equipment you need:
-        </h3>
         <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           {equipment.map((item) => (
             <EquipmentButton

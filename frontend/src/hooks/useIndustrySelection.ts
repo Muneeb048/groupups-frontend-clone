@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Industry } from "../types";
 
 type Step = "industry" | "equipment" | "chatbot";
@@ -17,12 +17,21 @@ export const useIndustrySelection = () => {
     } catch (e) {}
     return null;
   });
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [currentStep, setCurrentStep] = useState<Step>("industry");
   const [selectedEquipment, setSelectedEquipment] = useState<string | null>(
     null
   );
-  const [fadeIn, setFadeIn] = useState(true);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  // Show skeleton on initial load for 1 second
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+      setTimeout(() => setFadeIn(true), 50);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleIndustrySelect = (industry: Industry) => {
     setSelectedIndustry(industry);
