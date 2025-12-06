@@ -9,10 +9,10 @@ interface UseResizablePanelOptions {
 export const useResizablePanel = ({
   defaultWidth = 55,
   minWidth = 30,
-  maxWidth = 70,
 }: UseResizablePanelOptions = {}) => {
   const [leftWidth, setLeftWidth] = useState(defaultWidth);
   const [isResizing, setIsResizing] = useState(false);
+  const [startWidth, setStartWidth] = useState(defaultWidth);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,12 +24,16 @@ export const useResizablePanel = ({
       const newLeftWidth =
         ((e.clientX - containerRect.left) / containerRect.width) * 100;
 
-      const constrainedWidth = Math.max(minWidth, Math.min(maxWidth, newLeftWidth));
+      const constrainedWidth = Math.max(
+        minWidth,
+        Math.min(startWidth, newLeftWidth)
+      );
       setLeftWidth(constrainedWidth);
     };
 
     const handleMouseUp = () => {
       setIsResizing(false);
+      setStartWidth(leftWidth);
     };
 
     if (isResizing) {
@@ -45,10 +49,11 @@ export const useResizablePanel = ({
       document.body.style.cursor = "";
       document.body.style.userSelect = "";
     };
-  }, [isResizing, minWidth, maxWidth]);
+  }, [isResizing, minWidth, leftWidth, startWidth]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
+    setStartWidth(leftWidth);
     setIsResizing(true);
   };
 
@@ -59,4 +64,3 @@ export const useResizablePanel = ({
     handleMouseDown,
   };
 };
-

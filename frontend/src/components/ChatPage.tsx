@@ -22,34 +22,38 @@ const ChatPage: React.FC = () => {
   const messagesEndRef = useScrollToBottom([messages, isLoading]);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#041018] flex relative">
-      {/* Desktop: Resizable chat panel */}
-      <div
-        className="hidden lg:flex flex-col h-screen transition-none"
-        style={{ width: `${leftWidth}%` }}
-      >
-        <div className="flex flex-col border-r border-teal-950/70 h-screen flex-1">
-          <ChatContent
-            messages={messages}
-            isLoading={isLoading}
-            inputValue={inputValue}
-            onInputChange={handleInputChange}
-            onSubmit={handleSubmit}
-            onOpenRepPopup={() => setIsRepPopupOpen(true)}
-            messagesEndRef={messagesEndRef}
-          />
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-[#041018] relative overflow-hidden"
+    >
+      <div className="hidden lg:flex h-screen w-full absolute inset-0">
+        {/* Desktop: Resizable chat panel */}
+        <div
+          className="flex flex-col h-screen transition-none flex-shrink-0"
+          style={{ width: `${leftWidth}%` }}
+        >
+          <div className="flex flex-col border-r border-teal-950/70 h-screen flex-1">
+            <ChatContent
+              messages={messages}
+              isLoading={isLoading}
+              inputValue={inputValue}
+              onInputChange={handleInputChange}
+              onSubmit={handleSubmit}
+              onOpenRepPopup={() => setIsRepPopupOpen(true)}
+              messagesEndRef={messagesEndRef}
+            />
+          </div>
         </div>
-      </div>
 
-      {/* Resizable divider */}
-      <ResizableDivider onMouseDown={handleMouseDown} />
+        {/* Resizable divider */}
+        <ResizableDivider onMouseDown={handleMouseDown} />
 
-      {/* Desktop: Animation panel - fixed 40% width (original size) */}
-      <div
-        className="hidden lg:flex h-screen bg-[#041018] ml-6 transition-none flex-shrink-0"
-        style={{ width: "41%" }}
-      >
-        <LottiePlayer animationData={animationSvg} />
+        {/* Desktop: Animation panel - takes remaining space and centers animation */}
+        <div className="flex h-screen bg-[#041018] transition-none items-center justify-center flex-1">
+          <div className="w-full max-w-[600px] px-6">
+            <LottiePlayer animationData={animationSvg} />
+          </div>
+        </div>
       </div>
 
       {/* Mobile: Full width chat */}

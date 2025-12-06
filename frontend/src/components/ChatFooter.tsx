@@ -9,7 +9,7 @@ const ChatFooter: React.FC<ChatFooterProps> = ({
 }) => {
   return (
     <div className="px-4 pb-4 flex-shrink-0">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto xl:max-w-none xl:mx-0">
         <ChatInput
           value={inputValue}
           onChange={onInputChange}
@@ -37,4 +37,3 @@ const ChatFooter: React.FC<ChatFooterProps> = ({
 };
 
 export default ChatFooter;
-
