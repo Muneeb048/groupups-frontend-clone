@@ -1,5 +1,5 @@
 import React from "react";
-import { useTypingEffect } from "../hooks/useTypingEffect"; // Adjust path as needed
+import { useTypingEffect } from "../hooks/useTypingEffect";
 import type { Message } from "../types/chat";
 import Skeleton from "./Skeleton";
 
@@ -8,7 +8,10 @@ interface ChatMessageProps {
   isLoading?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ message, isLoading = false }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({
+  message,
+  isLoading = false,
+}) => {
   const isBot = message?.sender === "bot";
   const { displayedText, isTyping } = useTypingEffect(
     isBot && message ? message.text : "",

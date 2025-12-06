@@ -45,10 +45,8 @@ const ChatPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Resizable divider */}
         <ResizableDivider onMouseDown={handleMouseDown} />
 
-        {/* Desktop: Animation panel - takes remaining space and centers animation */}
         <div className="flex h-screen bg-[#041018] transition-none items-center justify-center flex-1">
           <div className="w-full max-w-[600px] px-6">
             <LottiePlayer animationData={animationSvg} />
@@ -56,7 +54,6 @@ const ChatPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile: Full width chat */}
       <div className="lg:hidden w-full flex flex-col border-r border-teal-950/70 h-screen">
         <ChatContent
           messages={messages}

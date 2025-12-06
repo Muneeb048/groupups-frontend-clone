@@ -10,7 +10,6 @@ const LandingPage: React.FC<LandingPageProps> = ({
 }) => {
   const [internalLoading, setInternalLoading] = useState(true);
 
-  // Show skeleton on initial load for 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
       setInternalLoading(false);

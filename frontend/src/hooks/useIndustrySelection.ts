@@ -24,7 +24,6 @@ export const useIndustrySelection = () => {
   );
   const [fadeIn, setFadeIn] = useState(false);
 
-  // Show skeleton on initial load for 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);

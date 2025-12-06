@@ -13,12 +13,10 @@ export default function RepPopup({ isOpen, onClose }: RepPopupProps) {
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6 md:p-4"
       onClick={onClose}
     >
-      {/* Modal Content */}
       <div
         className="bg-[#040f18] rounded-2xl w-full max-w-[340px] sm:max-w-[380px] md:max-w-[400px] lg:max-w-[432px] mt-2 relative"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="flex items-center justify-between p-3 border-b border-white/10">
           <h2 className="text-white text-sm font-medium">Your Rep</h2>
           <button onClick={onClose} className="text-white transition-colors">
@@ -26,21 +24,17 @@ export default function RepPopup({ isOpen, onClose }: RepPopupProps) {
           </button>
         </div>
 
-        {/* Content */}
         <div className="mt-6 sm:mt-8 md:mt-9 pb-6 sm:pb-8 md:pb-6 flex flex-col items-center">
-          {/* Avatar */}
           <img
             src="https://i.pravatar.cc/150"
             alt="Yasin Abbak"
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-22 lg:h-20 rounded-full object-cover mb-1 sm:mb-2 md:mb-1"
           />
 
-          {/* Name */}
           <h3 className="text-white text-lg sm:text-xl font-semibold">
             Yasin Abbak
           </h3>
 
-          {/* Email */}
           <a
             href="mailto:yasin@groupups.com"
             className="text-gray-400 text-sm sm:text-base mb-2 hover:text-gray-300 transition-colors"
@@ -48,7 +42,6 @@ export default function RepPopup({ isOpen, onClose }: RepPopupProps) {
             yasin@groupups.com
           </a>
 
-          {/* Phone */}
           <a
             href="tel:+19193646741"
             className="flex items-center gap-2 mb-4 sm:mb-6 text-[#4AA6A4] text-sm sm:text-md hover:text-[#6bb0ff] transition-colors"

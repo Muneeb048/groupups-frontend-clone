@@ -7,7 +7,6 @@ export const useChat = () => {
     isLoading: true,
   });
 
-  // Show skeleton for initial bot message on load
   useEffect(() => {
     const timer = setTimeout(() => {
       const initialMessage: Message = {
