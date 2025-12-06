@@ -34,7 +34,7 @@ function App() {
 
       {showHeader && <Hero />}
 
-      <main className="container mx-auto ">
+      <main className=" mx-auto ">
         <Routes>
           <Route
             path="/"
